@@ -23,8 +23,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         return await result.ToListAsync();
     }
 
-   
-
     public async Task<TEntity?> GetByIdAsync(string id)
     {
         using var results = await _entity.FindAsync(x => x.Id == id);

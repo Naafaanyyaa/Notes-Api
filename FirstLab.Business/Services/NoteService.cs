@@ -57,7 +57,7 @@ namespace FirstLab.Business.Services
         {
             var note = _mapper.Map<NoteEditRequest, Note>(noteEditRequest);
             note.LastModifiedDate = DateTime.Now;
-            note.Id = noteId;
+            note.Id = noteId; 
             await _repository.UpdateAsync(note);
 
             var result = await _repository.GetByIdAsync(noteId);
@@ -67,6 +67,15 @@ namespace FirstLab.Business.Services
         public async Task<List<Note>> GetListOfNotesByUserRequest(string userId, string request)
         {
             var list = await _repository.GetByRequestAsync(userId, request);
+            return list;
+        }
+
+        public async Task<List<Note>> GetListOfNotesByUserRequest(string userId, AdditionalSearch request)
+        {
+            request.Title = request.Title != null ? request.Title : "";
+            request.Description = request.Description != null ? request.Description : "";
+
+            var list = await _repository.GetByAdditionalRequest(userId, request.Title, request.Description);
             return list;
         }
     }

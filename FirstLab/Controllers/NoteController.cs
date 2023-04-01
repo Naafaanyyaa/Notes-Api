@@ -49,6 +49,15 @@ namespace FirstLab.Controllers
             var result = await _noteService.GetListOfNotesByUserRequest(userId, request);
             return StatusCode(StatusCodes.Status200OK, result);
         }
+        [HttpGet("get-notes-by-additional-request")]
+        [Authorize]
+        [ProducesResponseType(typeof(List<Note>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetListOfNotesByUserAdditionalRequest([FromQuery] AdditionalSearch request)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            var result = await _noteService.GetListOfNotesByUserRequest(userId, request);
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
 
         [HttpPost("add-note")]
         [Authorize]

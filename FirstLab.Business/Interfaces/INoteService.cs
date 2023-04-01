@@ -16,5 +16,6 @@ namespace FirstLab.Business.Interfaces
         Task DeleteNoteByIdAsync(string noteId);
         Task<Note> EditNoteAsync(NoteEditRequest noteEditRequest, string noteId);
         Task<List<Note>> GetListOfNotesByUserRequest(string userId, string request);
+        Task<List<Note>> GetListOfNotesByUserRequest(string userId, AdditionalSearch request);
     }
 }

@@ -34,7 +34,7 @@ public class UserService : IUserService
 
         user = _mapper.Map<RegisterRequest, User>(request);
 
-        user.CreatedDate = DateTime.Now;;
+        user.CreatedDate = DateTime.Now;
 
         var queryResult = await _userRepository.AddAsync(user);
 

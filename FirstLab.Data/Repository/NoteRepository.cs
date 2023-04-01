@@ -1,4 +1,5 @@
-﻿using FirstLab.Data.Interfaces;
+﻿using Amazon.Runtime.Internal;
+using FirstLab.Data.Interfaces;
 using FirstLab.Data.Models;
 using MongoDB.Driver;
 
@@ -31,9 +32,14 @@ namespace FirstLab.Data.Repository
 
         public async Task<List<Note>> GetByRequestAsync(string userId, string request)
         {
-            using var result = await _entity.FindAsync(x => x.UserId == Guid.Parse(userId) && (x.Text.Contains(request.Trim()) || x.Title.Contains(request.Trim())));
+            using var result = await _entity.FindAsync(x => x.UserId == Guid.Parse(userId) && ((x.Text.Contains(request.Trim()) || x.Title.Contains(request.Trim()))));
             return await result.ToListAsync();
         }
 
+        public async Task<List<Note>> GetByAdditionalRequest(string userId, string title, string text)
+        {
+            using var result = await _entity.FindAsync(x => x.UserId == Guid.Parse(userId) && (x.Text.Contains(text.Trim()) && x.Title.Contains(title.Trim())));
+            return await result.ToListAsync();
+        }
     }
 }

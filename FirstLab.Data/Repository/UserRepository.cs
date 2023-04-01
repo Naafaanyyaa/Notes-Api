@@ -21,7 +21,6 @@ public class UserRepository :Repository<User>, IUserRepository
     {
         using var results = await _entity.FindAsync(x => x.Name == login);
 
-
         return await results.FirstOrDefaultAsync();
     }
 
@@ -30,7 +29,6 @@ public class UserRepository :Repository<User>, IUserRepository
         await _entity.FindOneAndUpdateAsync(x => x.Id == entity.Id, Builders<User>.Update.Set(x => x.LastModifiedDate, entity.LastModifiedDate)).ConfigureAwait(false);
         var result = await _entity.FindOneAndUpdateAsync(x => x.Id == entity.Id, Builders<User>.Update.Set(x => x.Password, entity.Password)).ConfigureAwait(false);
         
-
         return result;
     }
 }
