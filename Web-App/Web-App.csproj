@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Web_App</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FirstLab.Business\FirstLab.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\Register.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\AddNote.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\EditNote.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\ViewNote.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\ChangePassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\GetUserList.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\Register.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\RegisterComplete.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\RegisterComplete.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\GetUserList.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\ChangePassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\ViewNote.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\EditNote.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\AddNote.cshtml" />
+  </ItemGroup>
+
+</Project>

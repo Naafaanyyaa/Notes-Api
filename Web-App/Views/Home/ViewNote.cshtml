@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model FirstLab.Data.Models.Note
+
+<div class="wrapper">
+    <div class="content">
+        <div class="title">@Html.DisplayName(Model.Title)</div>
+        <div class="text">@Html.DisplayName(Model.Text)</div>
+    </div>
+    <div class="buttons">
+        <a class="text-dark edit button" asp-area="" asp-controller="Home" asp-route-id="@Model.Id" asp-action="EditNote">Edit</a>
+        <a class="text-dark default button" asp-area="" asp-controller="Home" asp-route-id="@Model.Id" asp-action="DeleteNote">Delete</a>
+    </div>
+</div>

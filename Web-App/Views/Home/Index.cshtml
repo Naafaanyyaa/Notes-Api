@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model System.Collections.Generic.List<FirstLab.Data.Models.Note>;
+@{
+    ViewData["Title"] = "Notes Page";
+}
+
+<div class="note-header">
+    <h1>My notes</h1>
+    <a class="text-dark add button" asp-area="" asp-controller="Home" asp-action="AddNote">Add</a>
+</div>
+
+@foreach (var note in Model)
+{
+    <div class="wrapper">
+        <div class="content">
+            <div class="title">@Html.DisplayName(note.Title)</div>
+        </div>
+        <div class="buttons">
+            <a class="text-dark default button" asp-area="" asp-controller="Home" asp-action="ViewNote" asp-route-id="@note.Id">View note</a>
+        </div>
+    </div>
+}

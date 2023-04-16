@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model FirstLab.Business.Models.Request.RegisterRequest
+
+<div>
+    <form method="post" asp-controller="User" asp-action="Register">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label><br />
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label><br />
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </div>
+    </form>
+    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Already have an account?</a>
+</div>

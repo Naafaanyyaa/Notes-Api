@@ -16,6 +16,7 @@ public static class BusinessLayerRegistration
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddScoped<IUserService,UserService>();
         services.AddScoped<INoteService, NoteService>();
+        services.AddScoped<IAuthenticateService, AuthenticateService>();
         services.AddScoped<JwtHandler>();
 
         return services;

@@ -1,0 +1,28 @@
+﻿@model System.Collections.Generic.List<FirstLab.Business.Models.Response.UserResponse>
+
+<h1>Users list</h1>
+
+<ul class="with-marker">
+    @foreach (var user in Model)
+    {
+        <table class="table">
+            <tr><td>Id</td><td>@Html.DisplayName(user.Id)</td></tr>
+            <tr><td>Name</td><td>@Html.DisplayName(user.Name)</td></tr>
+            <tr><td>CreatedDate</td><td>@Html.DisplayName(user.CreatedDate.Day.ToString())/@Html.DisplayName(user.CreatedDate.Month.ToString())/@Html.DisplayName(user.CreatedDate.Year.ToString())</td></tr>
+            <tr><td>LastModifiedDate</td>
+                 @if (@Html.DisplayName
+                         (user.LastModifiedDate?.ToString()) == "")
+                                              {
+                                                  <td>-</td>
+                                              }
+                                              else
+                                              {
+                                                  <td>
+                        @Html.DisplayName(user.LastModifiedDate?.Day.ToString())/@Html.DisplayName(user.LastModifiedDate?.Month.ToString())/@Html.DisplayName(user.LastModifiedDate?.Year.ToString())
+                                                  </td>
+                                              }
+                </tr>
+        </table>
+    }
+</ul>
+

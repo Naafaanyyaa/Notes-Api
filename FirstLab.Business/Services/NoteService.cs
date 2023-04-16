@@ -55,9 +55,11 @@ namespace FirstLab.Business.Services
 
         public async Task<Note> EditNoteAsync(NoteEditRequest noteEditRequest, string noteId)
         {
+            var lastNote = await _repository.GetByIdAsync(noteId);
             var note = _mapper.Map<NoteEditRequest, Note>(noteEditRequest);
             note.LastModifiedDate = DateTime.Now;
-            note.Id = noteId; 
+            note.Id = noteId;
+            note.UserId = lastNote.UserId;
             await _repository.UpdateAsync(note);
 
             var result = await _repository.GetByIdAsync(noteId);
