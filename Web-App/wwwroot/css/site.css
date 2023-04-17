@@ -152,3 +152,7 @@ table th {
     align-items: center;
     padding: 5px
 }
+.searching-field {
+    display: flex;
+    gap: 10px;
+}

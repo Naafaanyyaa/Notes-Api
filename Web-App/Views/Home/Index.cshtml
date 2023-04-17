@@ -6,9 +6,13 @@
 
 <div class="note-header">
     <h1>My notes</h1>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("additionalSearch")
+        <input type="submit" value="submit"/>
+    }
     <a class="text-dark add button" asp-area="" asp-controller="Home" asp-action="AddNote">Add</a>
 </div>
-
 @foreach (var note in Model)
 {
     <div class="wrapper">

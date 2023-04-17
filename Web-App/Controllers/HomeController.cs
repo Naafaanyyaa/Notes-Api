@@ -4,6 +4,7 @@ using FirstLab.Business.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Web_App.Models;
 using FirstLab.Business.Models.Request;
+using FirstLab.Data.Models;
 
 namespace Web_App.Controllers
 {
@@ -19,7 +20,7 @@ namespace Web_App.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? additionalSearch)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction(nameof(UserController.Unauthorized), "User");
@@ -27,13 +28,23 @@ namespace Web_App.Controllers
             var claims = User.Claims;
             string[] leha_byv_tyt = new string[2];
             int i = 0;
+
             foreach (var claim in claims)
             {
                 leha_byv_tyt[i] = claim.Value;
                 i++;
             }
 
-            var notesList = await _noteService.GetListOfNotesByUserIdAsync(leha_byv_tyt[0]);
+            List<Note> notesList = new List<Note>();
+
+            if (additionalSearch != null)
+            {
+                notesList = await _noteService.GetListOfNotesByUserRequest(leha_byv_tyt[0], additionalSearch);
+            }
+            else
+            {
+                notesList = await _noteService.GetListOfNotesByUserIdAsync(leha_byv_tyt[0]);
+            }
 
             return View(notesList);
         }
@@ -69,7 +80,7 @@ namespace Web_App.Controllers
             return View(note);
         }
 
-        [HttpPost("Home/DeleteNote/{noteId}")]
+        [HttpGet("Home/DeleteNote/{noteId}")]
         public async Task<IActionResult> DeleteNote(string noteId)
         {
             if (!User.Identity.IsAuthenticated)
@@ -124,7 +135,7 @@ namespace Web_App.Controllers
                 i++;
             }
 
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+           return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
 
